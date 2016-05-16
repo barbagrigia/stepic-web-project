@@ -1,1 +1,1 @@
-# Курс Web технологии https://stepic.org/course/Web-технологии-154
+# [Course Web development on stepic.org](https://stepic.org/course/Web-технологии-154/)
