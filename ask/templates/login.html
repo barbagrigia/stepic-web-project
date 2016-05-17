@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Login </title>   
+    </head>
+
+    <body>
+      {% for e in form.non_fields.error %}
+         <div> {{ e }} </div>
+      {% endfor %}      
+      <form method="post" action="/login/">
+        {% csrf_token %}
+        <fieldset> 
+            {% for field in form %} 
+             <div>
+               {{ field.errors }}
+               <label> {{ field.label }} </label>
+               <div> {{ field }} </div>
+             </div>
+            {% endfor %}
+        </fieldset>
+        <div>
+           <button type="submit"> Save </button>
+        </div> 
+      </form>
+    </body>
+</html> 
