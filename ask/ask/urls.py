@@ -1,14 +1,16 @@
-from django.conf.urls import patterns, include, url
-
+from django.conf.urls import url
 from django.contrib import admin
-admin.autodiscover()
+from qa.views import test, basetemp, questpage, askform, newanswer, signupform, loginform, logoutPage
 
-urlpatterns = patterns('',
-	url(r'^$', 'qa.views.test', name='home'),
-	url(r'^login/.*$', 'qa.views.test', name='login'),
-	url(r'^signup/.*$', 'qa.views.test', name='signup'),
-	url(r'^question/\d+/$', 'qa.views.test', name='question'),
-	url(r'^ask/.*$', 'qa.views.test', name='ask'),
-	url(r'^popular/.*$', 'qa.views.test', name='popular'),
-	url(r'^new/.*$', 'qa.views.test', name='new')
-)
+urlpatterns = [
+	url(r'^$', basetemp, {'url':'/?page=','order':'-added_ad'}),
+	url(r'^login/.*$', loginform),
+	url(r'^logout/.*$', logoutPage),
+	url(r'^signup/.*$', signupform),
+	url(r'^question/(?P<slug>\d+)/$', questpage),
+	url(r'^question/$', askform),
+	url(r'^ask/.*$', askform),
+	url(r'^popular/.*$', basetemp, {'url':'/popular/?page=','order':'-likes'}),
+	url(r'^new/.*$', test),
+	url(r'^answer/.*$', newanswer),
+]
