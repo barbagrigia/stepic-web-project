@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block header %}{{ block.super }}--{{ user }}{% endblock %}
+{% block content %}
+	<nav>
+		<ul class="paginator">
+		{% for p in paginator.page_range %}
+			{% if p == page.number %}
+			<li class="paginator__active">{{ p }}</li>
+			{% else %}
+			<li><a href="{{ paginator.baseurl }}{{ p }}">{{ p }}</a></li>	
+			{% endif %}
+		{% endfor %}		
+		</ul>
+	</nav>
+	{% for question in questions %}
+	<article>
+		<header><h2>{{ question.title }}</h2></header>
+		<p><a href="/question/{{ question.pk }}">Перейти на страница вопроса</a></p>
+		<span>{{ question.added_ad }}</span>
+	</article>
+	{% endfor %}
+{% endblock %}
