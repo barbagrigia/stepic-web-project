@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block header %}{{ block.super }}{% endblock %}
+{% block content %}
+	<article>
+		<aside style="float:left;font-size:20px;margin:5px;text-transform:uppercase">Вопрос</aside>
+		<header><h2>{{ question.title }}</h2><h3>{{ question.author }}</h3></header>
+		<p>{{ question.text }}</p>
+		<span>{{ question.added_ad }}</span>
+	</article>
+	<h2>Ответы</h2>
+	<ol>
+	{% for answer in answers %}
+		<li>
+			<article>
+				<header><h3 style="background-color:#112233;text-align:right">{{ answer.author }}</h3></header>
+				<p>{{ answer.text }}</p>
+				<span>{{ answer.added_ad }}</span>
+			<article>
+		</li>
+	{% endfor %}
+	</ol>
+	<h2>Напиши свой ответ</h2>
+	<form action="/answer/" method="POST">
+		{% csrf_token %}
+		{% for field in newanswer %}
+		<div><label>{{ field.label }}<div>{{ field }}</div></label></div>
+		{% endfor %}
+		<input type="submit" value="Send">
+	</form>
+{% endblock %}
