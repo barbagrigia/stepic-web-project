@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1265.21">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo; color: #323333}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo; min-height: 14.0px}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo; color: #183691}
+    span.s1 {letter-spacing: 0.0px}
+    span.s2 {letter-spacing: 0.0px; color: #63a35c}
+    span.s3 {letter-spacing: 0.0px; color: #323333}
+    span.s4 {letter-spacing: 0.0px; color: #795da3}
+    span.Apple-tab-span {white-space:pre}
+    table.t1 {border-collapse: collapse}
+    td.td1 {width: 928.0px; padding: 0.0px 10.0px 0.0px 10.0px}
+    td.td2 {width: 50.0px; min-width: 50.0px; border-style: solid; border-width: 0.0px 1.0px 0.0px 0.0px; border-color: transparent #eeeeee transparent transparent; padding: 0.0px 10.0px 0.0px 10.0px}
+  </style>
+</head>
+<body>
+<table cellspacing="0" cellpadding="0" class="t1">
+  <tbody>
+    <tr>
+      <td colspan="2" valign="top" class="td1">
+        <p class="p1"><span class="s1">{% extends 'base.html' %}</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td2">
+        <p class="p2"><span class="s1"></span><br></p>
+      </td>
+      <td valign="top" class="td1">
+        <p class="p1"><span class="s1">{% block header %}&lt;</span><span class="s2">h1</span><span class="s1">&gt;Задай вопрос&lt;/</span><span class="s2">h1</span><span class="s1">&gt;{% endblock %}</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td2">
+        <p class="p2"><span class="s1"></span><br></p>
+      </td>
+      <td valign="top" class="td1">
+        <p class="p1"><span class="s1">{% block content %}</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td2">
+        <p class="p2"><span class="s1"></span><br></p>
+      </td>
+      <td valign="top" class="td1">
+        <p class="p3"><span class="s3"><span class="Apple-tab-span">	</span>&lt;</span><span class="s2">form</span><span class="s3"> </span><span class="s4">action</span><span class="s3">=</span><span class="s1">"/ask/"</span><span class="s3"> </span><span class="s4">method</span><span class="s3">=</span><span class="s1">"POST"</span><span class="s3">&gt;</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td2">
+        <p class="p2"><span class="s1"></span><br></p>
+      </td>
+      <td valign="top" class="td1">
+        <p class="p1"><span class="s1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>{% csrf_token %}</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td2">
+        <p class="p2"><span class="s1"></span><br></p>
+      </td>
+      <td valign="top" class="td1">
+        <p class="p1"><span class="s1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>{% for field in ask %}</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td2">
+        <p class="p2"><span class="s1"></span><br></p>
+      </td>
+      <td valign="top" class="td1">
+        <p class="p1"><span class="s1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>&lt;</span><span class="s2">div</span><span class="s1">&gt;&lt;</span><span class="s2">label</span><span class="s1">&gt;{{ field.label }}&lt;</span><span class="s2">div</span><span class="s1">&gt;{{ field }}&lt;/</span><span class="s2">div</span><span class="s1">&gt;&lt;/</span><span class="s2">label</span><span class="s1">&gt;&lt;/</span><span class="s2">div</span><span class="s1">&gt;</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td2">
+        <p class="p2"><span class="s1"></span><br></p>
+      </td>
+      <td valign="top" class="td1">
+        <p class="p1"><span class="s1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>{% endfor %}</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td2">
+        <p class="p2"><span class="s1"></span><br></p>
+      </td>
+      <td valign="top" class="td1">
+        <p class="p3"><span class="s3"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>&lt;</span><span class="s2">input</span><span class="s3"> </span><span class="s4">type</span><span class="s3">=</span><span class="s1">"submit"</span><span class="s3"> </span><span class="s4">value</span><span class="s3">=</span><span class="s1">"Send"</span><span class="s3">&gt;</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td2">
+        <p class="p2"><span class="s1"></span><br></p>
+      </td>
+      <td valign="top" class="td1">
+        <p class="p1"><span class="s1"><span class="Apple-tab-span">	</span>&lt;/</span><span class="s2">form</span><span class="s1">&gt;</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td2">
+        <p class="p2"><span class="s1"></span><br></p>
+      </td>
+      <td valign="top" class="td1">
+        <p class="p1"><span class="s1">{% endblock %}</span></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
