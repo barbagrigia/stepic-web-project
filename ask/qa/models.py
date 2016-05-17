@@ -1,32 +1,19 @@
+from __future__ import unicode_literals
+
 from django.db import models
-
-#User model
 from django.contrib.auth.models import User
-
-#Question model
-#title - заголовок вопроса
-#text - полный текст вопроса
-#added_at - дата добавления вопроса
-#rating - рейтинг вопроса (число)
-#author - автор вопроса
-#likes - список пользователей, поставивших "лайк"
+# Create your models here.
 
 class Question(models.Model):
-	title = models.CharField(max_length = 255)
+	title = models.CharField(max_length=255)
 	text = models.TextField()
-	added_at = models.DateTimeField(auto_now = True)
-	rating = models.IntegerField(default = 0)
-	author = models.ForeignKey(User)
+	added_ad = models.DateTimeField('Created', auto_now=True)
+	rating = models.IntegerField(default=0)
+	author = models.CharField(max_length=255)
 	likes = models.ManyToManyField(User)
-
-#Answer model
-#text - текст ответа
-#added_at - дата добавления ответа
-#question - вопрос, к которому относится ответ
-#author - автор ответа
 
 class Answer(models.Model):
 	text = models.TextField()
-	added_at = models.DateTimeField(auto_now = True)
-	question = models.ForeignKey(Question)
-	author = models.ForeignKey(User)
+	added_ad = models.DateTimeField('Created', auto_now=True)
+	author = models.CharField(max_length=255)
+	question = models.ForeignKey(Question, on_delete=models.CASCADE)
