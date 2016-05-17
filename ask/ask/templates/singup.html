@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block header %}<h1>{{ header }}</h1>{% endblock %}
+{% block content %}
+	<form action="/{{ url }}/" method="POST">
+		{% csrf_token %}
+		{% for field in signup %}
+		<div><label>{{ field.label }}<div>{{ field }}</div></label></div>
+		{% endfor %}
+		<input type="submit" value="Send">
+	</form>
+{% endblock %}
