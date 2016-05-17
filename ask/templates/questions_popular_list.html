@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Popular questions</title>   
+    </head>
+
+    <body>
+      {% if user.is_authenticated %}
+         {{ user.get_username }} is logging in  <br>
+      {% else %}
+         User is logout <br>
+      {% endif %}
+
+      Pages: &nbsp;
+      {% for p in paginator.page_range %}
+        {% if p == page.number %}
+           {{ p }} &nbsp;
+        {% else %}
+          <a href="{% url 'popular' p %}"> {{ p }} </a> &nbsp;
+        {% endif %}
+      {% endfor %}
+      <br>
+      Questions:
+      {% for question in questions %}
+      <p>  {{ question.title }}, {{ question.text }} , rate = {{ question.rating }}  
+          <a href="{% url 'question' question.id %}"> >>> </a>
+      </p> 
+      {% endfor %}
+
+    </body>
+</html>
