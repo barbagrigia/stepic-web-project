@@ -1,3 +1,3 @@
 # [Course Web development on stepic.org](https://stepic.org/course/154/)
 
-Python, Django, Git, Linux, bash, nginx, gunicorn 
+python, django, git, linux, bash, nginx, wsgi, gunicorn, ajax
